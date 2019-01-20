@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<label type="SSCC-96" quantity="1">
+	<printer name="pm4i"/>
+	<rfid>
+		<field name="data" format="hex">31603932445DCC4439000000</field>
+	</rfid>
+</label>

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     15-Jul-2005 11:49:38                                                        
+
+     wjm_rfid    
+     Demonstrates the RFID IF5 Reader.
+                   
+     milbuw                                                                
+     ====================================================================== -->
+<project name="wjm_rfid" default="default" basedir=".">
+
+	<description>
+            Demonstrates the RFID IF5 Reader.
+    </description>
+	
+	<property name="build.compiler" value="javac1.4"/>
+
+	<property name="src" value="src"/>
+	<property name="bin" value="bin"/>
+	<property name="conf" value="conf"/>
+	<property name="lib" value="lib"/>
+	<property name="dist" value="dist"/>
+
+
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" depends="compile" description="All RFID Software"/>
+	
+	<target name="compile" depends="" description="Compiles source">
+    	<javac srcdir="${src}" destdir="${dist}" debug="on">
+    		<classpath>
+				<fileset dir="${lib}">
+    				<include name="**/*.jar"/>
+				</fileset>
+    		</classpath>
+		</javac>
+	</target>
+	
+	<target name="clean-dist" description="Cleans dist">
+		<delete includeemptydirs="true">
+			<fileset dir="${dist}">
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="copy-lib">
+		<copy todir="${dist}">
+			<fileset dir="." includes="${lib}/*"/>
+		</copy>
+	</target>
+	
+	<target name="copy-conf">
+		<copy todir="${dist}">
+			<fileset dir="." includes="${conf}/*"/>
+		</copy>
+	</target>
+	
+	<target name="copy-launchers">
+		<copy todir="${dist}">
+			<fileset dir="${src}">
+				<include name="*.bat"/>
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="build" depends="mkdir-dist,compile,copy-lib,copy-conf,copy-launchers" description="Builds distribution"/>
+	
+	<target name="build-clean" depends="clean-dist,mkdir-dist,compile,copy-lib,copy-conf,copy-launchers" description="Builds distribution"/>
+	
+	<target name="mkdir-dist">
+		<mkdir dir="${dist}"/>
+	</target>
+	
+</project>
+

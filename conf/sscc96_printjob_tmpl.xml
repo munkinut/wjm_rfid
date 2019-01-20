@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<label type="SSCC-96" quantity="QTY">
+	<printer name="PRINTER"/>
+	<rfid>
+		<field name="data" format="hex">RFID_DATA</field>
+	</rfid>
+</label>
